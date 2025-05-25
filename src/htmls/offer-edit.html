@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>オファー文面編集 (OFF-001) - WEBアプリケーション</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+            padding-top: 4rem; /* header height */
+            padding-bottom: 3rem; /* footer height */
+        }
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #c1c1c1;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #a1a1a1;
+        }
+    </style>
+</head>
+<body class="bg-gray-100 text-gray-800">
+
+    <header class="bg-white shadow-md h-16 fixed top-0 left-0 right-0 z-30 flex items-center justify-between px-6">
+        <a href="/" class="text-4xl font-bold bg-gradient-to-b from-red-600 to-red-400 text-transparent bg-clip-text inline-block hover:opacity-90 transition-opacity">OFFERS</a>
+        <div class="flex items-center space-x-6">
+            <span class="text-gray-700 text-sm">株式会社ABC</span>
+            <a href="#account-settings" title="アカウント設定" class="text-gray-600 hover:text-blue-700">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6"><path stroke-linecap="round" stroke-linejoin="round" d="M17.982 18.725A7.488 7.488 0 0 0 12 15.75a7.488 7.488 0 0 0-5.982 2.975m11.963 0a9 9 0 1 0-11.963 0m11.963 0A8.966 8.966 0 0 1 12 21a8.966 8.966 0 0 1-5.982-2.275M15 9.75a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" /></svg>
+            </a>
+            <a href="#login" class="bg-gray-200 hover:bg-gray-300 text-gray-700 font-medium py-2 px-4 rounded text-sm border border-gray-300">
+                ログアウト
+            </a>
+        </div>
+    </header>
+
+    <aside class="w-60 bg-red-700 text-white flex flex-col fixed top-16 bottom-12 left-0 z-20 overflow-y-auto">
+        <nav class="flex-1 p-3 space-y-1">
+            <a href="#jobs" class="group flex items-center space-x-3 py-2.5 px-3 rounded-md hover:bg-red-800 transition-colors border-b border-white/50">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5 flex-shrink-0" title="求人アイコン"><path stroke-linecap="round" stroke-linejoin="round" d="M20.25 14.15v4.073a2.25 2.25 0 0 1-2.25 2.25h-12a2.25 2.25 0 0 1-2.25-2.25v-12a2.25 2.25 0 0 1 2.25-2.25h4.073M20.25 14.15c.621 0 1.125-.504 1.125-1.125V4.875c0-.621-.504-1.125-1.125-1.125h-9.75c-.621 0-1.125.504-1.125 1.125V7.5M20.25 14.15M13.5 6.375h3.375M13.5 10.125h3.375M6.375 6.375h1.125m-1.125 3.75h1.125m-1.125 3.75h1.125M6.375 13.875h1.125M6.375 17.625h1.125m-1.125 3.75h1.125" /></svg>
+                <span class="text-sm font-medium">求人</span>
+            </a>
+            <a href="#rules" class="group flex items-center space-x-3 py-2.5 px-3 rounded-md hover:bg-red-800 transition-colors border-b border-white/50"> 
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5 flex-shrink-0" title="オファー作成ルールアイコン"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m2.25 0H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 0 0-9-9Z" /></svg>
+                <span class="text-sm font-medium">オファー作成ルール</span>
+            </a>
+            <a href="#offers" class="group flex items-center space-x-3 py-2.5 px-3 rounded-md bg-red-800 transition-colors border-b border-white/50"> <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5 flex-shrink-0" title="オファー文面アイコン"><path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 0 1-2.25 2.25h-15a2.25 2.25 0 0 1-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0 0 19.5 4.5h-15a2.25 2.25 0 0 0-2.25 2.25m19.5 0v.243a2.25 2.25 0 0 1-1.07 1.916l-7.5 4.615a2.25 2.25 0 0 1-2.36 0L3.32 8.91a2.25 2.25 0 0 1-1.07-1.916V6.75" /></svg>
+                <span class="text-sm font-medium">オファー文面</span>
+            </a>
+            <a href="#settings" class="group flex items-center space-x-3 py-2.5 px-3 rounded-md hover:bg-red-800 transition-colors">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5 flex-shrink-0" title="設定アイコン"><path stroke-linecap="round" stroke-linejoin="round" d="M9.594 3.94c.09-.542.56-1.003 1.11-1.226.554-.225 1.151-.225 1.705 0 .55.223 1.02.684 1.11 1.226M9.594 3.94C8.433 4.803 7.5 6.094 7.5 7.5v1.597M9.594 3.94c.934.097 1.872.328 2.748.719M14.406 3.94c.09.542.56 1.003 1.11 1.226.554-.225 1.151-.225 1.705 0 .55.223 1.02.684 1.11 1.226M14.406 3.94c1.161.856 2.094 2.148 2.094 3.56v1.597M14.406 3.94c-.934.097-1.872.328-2.748.719M12 10.5a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0Zm0 0H12m0 0c.292 0 .578.025.856.073M12 10.5a2.25 2.25 0 1 0 0 4.5 2.25 2.25 0 0 0 0-4.5Zm0 0H12M6.343 16.061c-.378-.378-.567-.88-.567-1.386v-1.597c0-1.549.835-2.949 2.094-3.56M17.657 16.061c.378-.378.567-.88.567-1.386v-1.597c0-1.549-.835-2.949-2.094-3.56m0 0a3.001 3.001 0 0 0-3.532-1.49A3.001 3.001 0 0 0 9.75 7.5v1.597M4.5 15.75A2.25 2.25 0 0 1 6.75 18h10.5a2.25 2.25 0 0 1 2.25-2.25V13.5A2.25 2.25 0 0 1 17.25 11.25H6.75A2.25 2.25 0 0 1 4.5 13.5v2.25Z" /></svg>
+                <span class="text-sm font-medium">設定</span>
+            </a>
+        </nav>
+    </aside>
+
+    <main class="ml-60 flex-1 bg-white overflow-y-auto">
+         <div class="max-w-5xl mx-auto p-6 py-10">
+            <div class="flex justify-between items-center mb-8">
+                 <div>
+                    <h1 class="text-3xl font-bold text-gray-800">オファー文面編集</h1>
+                    <p class="mt-1 text-sm text-gray-500">オファーID: <span id="offer_id_display" class="font-semibold">OFF-001</span></p>
+                </div>
+                <a href="#offer-detail-OFF-001" id="backToDetailLinkFromEdit" class="text-sm font-medium text-sky-600 hover:text-sky-700 flex items-center space-x-1">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-4 h-4"><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" /></svg>
+                    <span>詳細に戻る</span>
+                </a>
+            </div>
+
+            <form action="#" method="POST" class="space-y-8 bg-slate-50 shadow-md sm:rounded-lg p-6 sm:p-8">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-x-6 gap-y-5 pb-6 border-b border-slate-200">
+                    <div>
+                        <label class="block text-sm font-medium text-slate-600">作成日時</label>
+                        <p class="mt-1 text-sm text-slate-800 py-2" id="creation_date_edit">2025年5月25日 10:30</p>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-slate-600">現在のステータス</label>
+                        <p class="mt-1 text-sm text-slate-800 py-2" id="status_edit_display">
+                            <span class="px-2.5 py-1 inline-flex text-xs leading-5 font-semibold rounded-full bg-yellow-100 text-yellow-800">
+                                下書き
+                            </span>
+                        </p>
+                    </div>
+                    <div class="md:col-span-1">
+                        <label class="block text-sm font-medium text-slate-600">求人名</label>
+                        <p class="mt-1 text-sm text-slate-800 py-2" id="job_name_edit">フロントエンドエンジニア (株式会社テックリード)</p>
+                    </div>
+                    <div class="md:col-span-1">
+                        <label class="block text-sm font-medium text-slate-600">候補者名</label>
+                        <p class="mt-1 text-sm text-slate-800 py-2" id="candidate_name_edit">山田 花子</p>
+                    </div>
+                </div>
+
+                <div>
+                    <label for="subject_edit" class="block text-sm font-medium leading-6 text-gray-900 mb-1.5">件名</label>
+                    <input type="text" name="subject" id="subject_edit" value="【株式会社テックリード】フロントエンドエンジニアのポジションに関するご案内"
+                           class="block w-full rounded-md border-0 py-2.5 px-3 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-sky-600 sm:text-sm sm:leading-6">
+                </div>
+
+                <div>
+                    <label for="offer_body_edit" class="block text-sm font-medium leading-6 text-gray-900 mb-1.5">本文</label>
+                    <textarea id="offer_body_edit" name="offer_body" rows="20"
+                              class="block w-full rounded-md border-0 py-2.5 px-3 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-sky-600 sm:text-sm sm:leading-6">山田 花子 様
+
+突然のご連絡失礼いたします。
+株式会社OFFERSのエージェント、[エージェント名]と申します。
+
+この度は、山田様の素晴らしいご経歴を拝見し、ぜひご紹介したいポジションがございましてご連絡いたしました。
+
+ご紹介求人：
+企業名：株式会社テックリード
+ポジション：フロントエンドエンジニア
+
+業務内容：
+・新規Webサービスのフロントエンド開発（React, TypeScript）
+・UI/UX改善提案および実装
+・コンポーネント設計、コードレビュー
+
+株式会社テックリード様は、革新的な技術で業界をリードする急成長中のIT企業です。
+特に、社員一人ひとりの成長を支援する文化と、自由な発想を歓迎する風土が魅力です。
+
+もし少しでもご興味をお持ちいただけましたら、ぜひ一度カジュアルにお話させていただく機会を頂戴できますと幸いです。
+オンラインでの面談も可能ですので、ご都合の良い日時をお知らせください。
+
+お忙しいところ恐縮ですが、ご検討いただけますようお願い申し上げます。
+
+------------------------------------
+株式会社OFFERS
+[エージェント名]
+[電話番号]
+[メールアドレス]
+[会社URL]
+------------------------------------</textarea>
+                    <p class="mt-2 text-xs text-gray-500">
+                        AIによって生成された文面です。必要に応じて修正してください。Markdown記法も一部利用可能です（例: **太字**, *イタリック*）。
+                    </p>
+                </div>
+
+                <div class="pt-8 mt-6 flex flex-col-reverse gap-y-3 sm:flex-row sm:justify-end sm:space-x-4">
+                    <a href="#offer-detail-OFF-001" id="cancelEditOfferLink" class="w-full sm:w-auto justify-center inline-flex items-center px-5 py-2.5 border border-gray-300 shadow-sm text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-sky-500 transition-colors">
+                        キャンセル
+                    </a>
+                    <button type="submit"
+                            class="w-full sm:w-auto justify-center inline-flex items-center px-5 py-2.5 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-red-600 hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500 transition-colors">
+                        変更を保存する
+                    </button>
+                </div>
+            </form>
+         </div>
+    </main>
+
+    <footer class="bg-gray-700 text-white text-center py-3 h-12 fixed bottom-0 left-0 right-0 z-30">
+        <p class="text-xs">&copy; <span id="currentYear"></span> 株式会社TORQUE</p

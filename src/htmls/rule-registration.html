@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>オファー作成ルール登録 - WEBアプリケーション</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+            padding-top: 4rem; /* header height */
+            padding-bottom: 3rem; /* footer height */
+        }
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #c1c1c1;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #a1a1a1;
+        }
+    </style>
+</head>
+<body class="bg-gray-100 text-gray-800">
+
+    <header class="bg-white shadow-md h-16 fixed top-0 left-0 right-0 z-30 flex items-center justify-between px-6">
+        <a href="/" class="text-4xl font-bold bg-gradient-to-b from-red-600 to-red-400 text-transparent bg-clip-text inline-block hover:opacity-90 transition-opacity">OFFERS</a>
+        <div class="flex items-center space-x-6">
+            <span class="text-gray-700 text-sm">株式会社ABC</span>
+            <a href="#account-settings" title="アカウント設定" class="text-gray-600 hover:text-blue-700">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6"><path stroke-linecap="round" stroke-linejoin="round" d="M17.982 18.725A7.488 7.488 0 0 0 12 15.75a7.488 7.488 0 0 0-5.982 2.975m11.963 0a9 9 0 1 0-11.963 0m11.963 0A8.966 8.966 0 0 1 12 21a8.966 8.966 0 0 1-5.982-2.275M15 9.75a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" /></svg>
+            </a>
+            <a href="#login" class="bg-gray-200 hover:bg-gray-300 text-gray-700 font-medium py-2 px-4 rounded text-sm border border-gray-300">
+                ログアウト
+            </a>
+        </div>
+    </header>
+
+    <aside class="w-60 bg-red-700 text-white flex flex-col fixed top-16 bottom-12 left-0 z-20 overflow-y-auto">
+        <nav class="flex-1 p-3 space-y-1">
+            <a href="#jobs" class="group flex items-center space-x-3 py-2.5 px-3 rounded-md hover:bg-red-800 transition-colors border-b border-white/50">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5 flex-shrink-0" title="求人アイコン"><path stroke-linecap="round" stroke-linejoin="round" d="M20.25 14.15v4.073a2.25 2.25 0 0 1-2.25 2.25h-12a2.25 2.25 0 0 1-2.25-2.25v-12a2.25 2.25 0 0 1 2.25-2.25h4.073M20.25 14.15c.621 0 1.125-.504 1.125-1.125V4.875c0-.621-.504-1.125-1.125-1.125h-9.75c-.621 0-1.125.504-1.125 1.125V7.5M20.25 14.15M13.5 6.375h3.375M13.5 10.125h3.375M6.375 6.375h1.125m-1.125 3.75h1.125m-1.125 3.75h1.125M6.375 13.875h1.125M6.375 17.625h1.125m-1.125 3.75h1.125" /></svg>
+                <span class="text-sm font-medium">求人</span>
+            </a>
+            <a href="#rules" class="group flex items-center space-x-3 py-2.5 px-3 rounded-md bg-red-800 transition-colors border-b border-white/50"> <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5 flex-shrink-0" title="オファー作成ルールアイコン"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m2.25 0H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 0 0-9-9Z" /></svg>
+                <span class="text-sm font-medium">オファー作成ルール</span>
+            </a>
+            <a href="#offers" class="group flex items-center space-x-3 py-2.5 px-3 rounded-md hover:bg-red-800 transition-colors border-b border-white/50">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5 flex-shrink-0" title="オファー文面アイコン"><path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 0 1-2.25 2.25h-15a2.25 2.25 0 0 1-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0 0 19.5 4.5h-15a2.25 2.25 0 0 0-2.25 2.25m19.5 0v.243a2.25 2.25 0 0 1-1.07 1.916l-7.5 4.615a2.25 2.25 0 0 1-2.36 0L3.32 8.91a2.25 2.25 0 0 1-1.07-1.916V6.75" /></svg>
+                <span class="text-sm font-medium">オファー文面</span>
+            </a>
+            <a href="#settings" class="group flex items-center space-x-3 py-2.5 px-3 rounded-md hover:bg-red-800 transition-colors">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5 flex-shrink-0" title="設定アイコン"><path stroke-linecap="round" stroke-linejoin="round" d="M9.594 3.94c.09-.542.56-1.003 1.11-1.226.554-.225 1.151-.225 1.705 0 .55.223 1.02.684 1.11 1.226M9.594 3.94C8.433 4.803 7.5 6.094 7.5 7.5v1.597M9.594 3.94c.934.097 1.872.328 2.748.719M14.406 3.94c.09.542.56 1.003 1.11 1.226.554-.225 1.151-.225 1.705 0 .55.223 1.02.684 1.11 1.226M14.406 3.94c1.161.856 2.094 2.148 2.094 3.56v1.597M14.406 3.94c-.934.097-1.872.328-2.748.719M12 10.5a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0Zm0 0H12m0 0c.292 0 .578.025.856.073M12 10.5a2.25 2.25 0 1 0 0 4.5 2.25 2.25 0 0 0 0-4.5Zm0 0H12M6.343 16.061c-.378-.378-.567-.88-.567-1.386v-1.597c0-1.549.835-2.949 2.094-3.56M17.657 16.061c.378-.378.567-.88.567-1.386v-1.597c0-1.549-.835-2.949-2.094-3.56m0 0a3.001 3.001 0 0 0-3.532-1.49A3.001 3.001 0 0 0 9.75 7.5v1.597M4.5 15.75A2.25 2.25 0 0 1 6.75 18h10.5a2.25 2.25 0 0 1 2.25-2.25V13.5A2.25 2.25 0 0 1 17.25 11.25H6.75A2.25 2.25 0 0 1 4.5 13.5v2.25Z" /></svg>
+                <span class="text-sm font-medium">設定</span>
+            </a>
+        </nav>
+    </aside>
+
+    <main class="ml-60 flex-1 bg-white overflow-y-auto">
+         <div class="max-w-3xl mx-auto p-6 py-8"> <h1 class="text-3xl font-bold text-gray-800 mb-8">オファー作成ルール登録</h1>
+
+            <form action="#" method="POST" class="space-y-7">
+                <div>
+                    <label for="rule_name" class="block text-sm font-medium text-gray-700 mb-1.5">ルール名</label>
+                    <input type="text" name="rule_name" id="rule_name"
+                           placeholder="例: 経験3年以上のエンジニア向け挨拶強化"
+                           class="mt-1 block w-full px-3 py-2.5 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-sky-500 focus:border-sky-500 sm:text-sm placeholder-gray-400">
+                </div>
+
+                <div>
+                    <label for="scope" class="block text-sm font-medium text-gray-700 mb-1.5">適用範囲</label>
+                    <select id="scope" name="scope"
+                            class="mt-1 block w-full px-3 py-2.5 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-sky-500 focus:border-sky-500 sm:text-sm">
+                        <option value="">選択してください</option>
+                        <option value="全体">全体</option>
+                        <option value="職種">職種</option>
+                        <option value="顧客">顧客</option>
+                        <option value="求人">求人</option>
+                    </select>
+                </div>
+
+                <div>
+                    <label for="target" class="block text-sm font-medium text-gray-700 mb-1.5">対象</label>
+                    <input type="text" name="target" id="target"
+                           placeholder="適用範囲に応じた対象を入力"
+                           class="mt-1 block w-full px-3 py-2.5 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-sky-500 focus:border-sky-500 sm:text-sm placeholder-gray-400">
+                    <p class="mt-1.5 text-xs text-gray-500">
+                        適用範囲で「職種」を選んだ場合は職種名（例: エンジニア）、「顧客」なら顧客名やID、「求人」なら求人名やIDを入力します。「全体」の場合は入力不要か、「全て」等と記述します。
+                    </p>
+                </div>
+
+                <div>
+                    <label for="rule_details" class="block text-sm font-medium text-gray-700 mb-1.5">ルール詳細 (AIへの指示内容)</label>
+                    <textarea id="rule_details" name="rule_details" rows="8"
+                              placeholder="例: 候補者の経験年数が3年以上の場合、オファー文面の冒頭に「〇〇様のご経歴の中でも特に素晴らしいと感じましたのは、△△におけるご経験です。弊社では…」といった形で、具体的な強みに触れる一文を挿入してください。また、その際はやや丁寧な言葉遣いを心がけてください。"
+                              class="mt-1 block w-full px-3 py-2.5 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-sky-500 focus:border-sky-500 sm:text-sm placeholder-gray-400"></textarea>
+                    <p class="mt-1.5 text-xs text-gray-500">
+                        この内容はAIがオファー文面を自動生成する際の指示となります。具体的かつ明確に記述してください。
+                    </p>
+                </div>
+                
+                <div>
+                    <label for="rule_priority" class="block text-sm font-medium text-gray-700 mb-1.5">優先度 (任意)</label>
+                    <input type="number" name="rule_priority" id="rule_priority"
+                           placeholder="例: 1 (数値が小さいほど高優先)"
+                           class="mt-1 block w-1/3 px-3 py-2.5 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-sky-500 focus:border-sky-500 sm:text-sm placeholder-gray-400">
+                     <p class="mt-1.5 text-xs text-gray-500">
+                        複数のルールが適用可能な場合に、どのルールを優先的に使用するかを指定します。未入力の場合、標準の優先度で処理されます。
+                    </p>
+                </div>
+
+                <div class="flex items-center pt-2">
+                    <input id="rule_enabled" name="rule_enabled" type="checkbox" checked 
+                           class="h-4 w-4 text-sky-600 border-gray-300 rounded focus:ring-sky-500">
+                    <label for="rule_enabled" class="ml-2 block text-sm text-gray-900">
+                        このルールを有効にする
+                    </label>
+                </div>
+
+
+                <div class="pt-8">
+                    <button type="submit"
+                            class="w-full flex justify-center py-3 px-4 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-red-600 hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500 transition-colors">
+                        ルールを登録する
+                    </button>
+                </div>
+            </form>
+         </div>
+    </main>
+
+    <footer class="bg-gray-700 text-white text-center py-3 h-12 fixed bottom-0 left-0 right-0 z-30">
+        <p class="text-xs">&copy; <span id="currentYear"></span> 株式会社TORQUE</p>
+    </footer>
+
+    <script>
+        document.getElementById('currentYear').textContent = new Date().getFullYear();
+    </script>
+</body>
+</html>

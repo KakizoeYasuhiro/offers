@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>アカウント設定 - WEBアプリケーション</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+            padding-top: 4rem; /* header height */
+            padding-bottom: 3rem; /* footer height */
+        }
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #c1c1c1;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #a1a1a1;
+        }
+    </style>
+</head>
+<body class="bg-gray-100 text-gray-800">
+
+    <header class="bg-white shadow-md h-16 fixed top-0 left-0 right-0 z-30 flex items-center justify-between px-6">
+        <a href="/" class="text-4xl font-bold bg-gradient-to-b from-red-600 to-red-400 text-transparent bg-clip-text inline-block hover:opacity-90 transition-opacity">OFFERS</a>
+        <div class="flex items-center space-x-6">
+            <span class="text-gray-700 text-sm">株式会社ABC</span>
+            <a href="#account-settings" title="アカウント設定" class="text-gray-600 hover:text-blue-700"> <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6"><path stroke-linecap="round" stroke-linejoin="round" d="M17.982 18.725A7.488 7.488 0 0 0 12 15.75a7.488 7.488 0 0 0-5.982 2.975m11.963 0a9 9 0 1 0-11.963 0m11.963 0A8.966 8.966 0 0 1 12 21a8.966 8.966 0 0 1-5.982-2.275M15 9.75a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" /></svg>
+            </a>
+            <a href="#login" class="bg-gray-200 hover:bg-gray-300 text-gray-700 font-medium py-2 px-4 rounded text-sm border border-gray-300">
+                ログアウト
+            </a>
+        </div>
+    </header>
+
+    <aside class="w-60 bg-red-700 text-white flex flex-col fixed top-16 bottom-12 left-0 z-20 overflow-y-auto">
+        <nav class="flex-1 p-3 space-y-1">
+            <a href="#jobs" class="group flex items-center space-x-3 py-2.5 px-3 rounded-md hover:bg-red-800 transition-colors border-b border-white/50">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5 flex-shrink-0" title="求人アイコン"><path stroke-linecap="round" stroke-linejoin="round" d="M20.25 14.15v4.073a2.25 2.25 0 0 1-2.25 2.25h-12a2.25 2.25 0 0 1-2.25-2.25v-12a2.25 2.25 0 0 1 2.25-2.25h4.073M20.25 14.15c.621 0 1.125-.504 1.125-1.125V4.875c0-.621-.504-1.125-1.125-1.125h-9.75c-.621 0-1.125.504-1.125 1.125V7.5M20.25 14.15M13.5 6.375h3.375M13.5 10.125h3.375M6.375 6.375h1.125m-1.125 3.75h1.125m-1.125 3.75h1.125M6.375 13.875h1.125M6.375 17.625h1.125m-1.125 3.75h1.125" /></svg>
+                <span class="text-sm font-medium">求人</span>
+            </a>
+            <a href="#rules" class="group flex items-center space-x-3 py-2.5 px-3 rounded-md hover:bg-red-800 transition-colors border-b border-white/50"> 
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5 flex-shrink-0" title="オファー作成ルールアイコン"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m2.25 0H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 0 0-9-9Z" /></svg>
+                <span class="text-sm font-medium">オファー作成ルール</span>
+            </a>
+            <a href="#offers" class="group flex items-center space-x-3 py-2.5 px-3 rounded-md hover:bg-red-800 transition-colors border-b border-white/50">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5 flex-shrink-0" title="オファー文面アイコン"><path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 0 1-2.25 2.25h-15a2.25 2.25 0 0 1-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0 0 19.5 4.5h-15a2.25 2.25 0 0 0-2.25 2.25m19.5 0v.243a2.25 2.25 0 0 1-1.07 1.916l-7.5 4.615a2.25 2.25 0 0 1-2.36 0L3.32 8.91a2.25 2.25 0 0 1-1.07-1.916V6.75" /></svg>
+                <span class="text-sm font-medium">オファー文面</span>
+            </a>
+            <a href="#settings" class="group flex items-center space-x-3 py-2.5 px-3 rounded-md hover:bg-red-800 transition-colors">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5 flex-shrink-0" title="設定アイコン"><path stroke-linecap="round" stroke-linejoin="round" d="M9.594 3.94c.09-.542.56-1.003 1.11-1.226.554-.225 1.151-.225 1.705 0 .55.223 1.02.684 1.11 1.226M9.594 3.94C8.433 4.803 7.5 6.094 7.5 7.5v1.597M9.594 3.94c.934.097 1.872.328 2.748.719M14.406 3.94c.09.542.56 1.003 1.11 1.226.554-.225 1.151-.225 1.705 0 .55.223 1.02.684 1.11 1.226M14.406 3.94c1.161.856 2.094 2.148 2.094 3.56v1.597M14.406 3.94c-.934.097-1.872.328-2.748.719M12 10.5a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0Zm0 0H12m0 0c.292 0 .578.025.856.073M12 10.5a2.25 2.25 0 1 0 0 4.5 2.25 2.25 0 0 0 0-4.5Zm0 0H12M6.343 16.061c-.378-.378-.567-.88-.567-1.386v-1.597c0-1.549.835-2.949 2.094-3.56M17.657 16.061c.378-.378.567-.88.567-1.386v-1.597c0-1.549-.835-2.949-2.094-3.56m0 0a3.001 3.001 0 0 0-3.532-1.49A3.001 3.001 0 0 0 9.75 7.5v1.597M4.5 15.75A2.25 2.25 0 0 1 6.75 18h10.5a2.25 2.25 0 0 1 2.25-2.25V13.5A2.25 2.25 0 0 1 17.25 11.25H6.75A2.25 2.25 0 0 1 4.5 13.5v2.25Z" /></svg>
+                <span class="text-sm font-medium">設定</span>
+            </a>
+        </nav>
+    </aside>
+
+    <main class="ml-60 flex-1 bg-white overflow-y-auto">
+         <div class="max-w-3xl mx-auto p-6 py-10"> 
+            <h1 class="text-3xl font-bold text-gray-800 mb-10">アカウント設定</h1>
+
+            <section aria-labelledby="profile-settings-heading" class="mb-12">
+                <form action="#" method="POST">
+                    <div class="bg-slate-50 shadow sm:rounded-lg">
+                        <div class="px-4 py-5 sm:px-6">
+                            <h2 id="profile-settings-heading" class="text-xl font-semibold leading-7 text-gray-900">プロフィール情報</h2>
+                            <p class="mt-1 text-sm text-gray-500">アカウントに紐づく基本情報を確認・編集できます。</p>
+                        </div>
+                        <div class="border-t border-gray-200 px-4 py-6 sm:p-6">
+                            <div class="space-y-6">
+                                <div>
+                                    <label for="user_name" class="block text-sm font-medium leading-6 text-gray-900">氏名</label>
+                                    <div class="mt-2">
+                                        <input type="text" name="user_name" id="user_name" autocomplete="name" value="山田 太郎"
+                                               class="block w-full rounded-md border-0 py-2.5 px-3 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-sky-600 sm:text-sm sm:leading-6">
+                                    </div>
+                                </div>
+                                <div>
+                                    <label for="user_email" class="block text-sm font-medium leading-6 text-gray-900">メールアドレス</label>
+                                    <div class="mt-2">
+                                        <input type="email" name="user_email" id="user_email" autocomplete="email" value="taro.yamada@example.com" readonly
+                                               class="block w-full rounded-md border-0 py-2.5 px-3 text-gray-700 shadow-sm ring-1 ring-inset ring-gray-300 bg-gray-100 cursor-not-allowed sm:text-sm sm:leading-6">
+                                    </div>
+                                    <p class="mt-2 text-xs text-gray-500">メールアドレスの変更をご希望の場合は、システム管理者にお問い合わせください。</p>
+                                </div>
+                            </div>
+                            <div class="mt-8 flex justify-end">
+                                <button type="submit" class="rounded-md bg-sky-600 px-4 py-2 text-sm font-semibold text-white shadow-sm hover:bg-sky-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-600 transition-colors">
+                                    プロフィールを保存
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </section>
+
+            <section aria-labelledby="security-settings-heading">
+                <form action="#" method="POST">
+                     <div class="bg-slate-50 shadow sm:rounded-lg">
+                        <div class="px-4 py-5 sm:px-6">
+                            <h2 id="security-settings-heading" class="text-xl font-semibold leading-7 text-gray-900">パスワード変更</h2>
+                            <p class="mt-1 text-sm text-gray-500">セキュリティのため、定期的なパスワードの変更を推奨します。</p>
+                        </div>
+                        <div class="border-t border-gray-200 px-4 py-6 sm:p-6">
+                            <div class="space-y-6">
+                                <div>
+                                    <label for="current_password" class="block text-sm font-medium leading-6 text-gray-900">現在のパスワード</label>
+                                    <div class="mt-2">
+                                        <input type="password" name="current_password" id="current_password" autocomplete="current-password"
+                                               class="block w-full rounded-md border-0 py-2.5 px-3 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-sky-600 sm:text-sm sm:leading-6">
+                                    </div>
+                                </div>
+                                <div>
+                                    <label for="new_password" class="block text-sm font-medium leading-6 text-gray-900">新しいパスワード</label>
+                                    <div class="mt-2">
+                                        <input type="password" name="new_password" id="new_password" autocomplete="new-password"
+                                               class="block w-full rounded-md border-0 py-2.5 px-3 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-sky-600 sm:text-sm sm:leading-6">
+                                    </div>
+                                    <p class="mt-2 text-xs text-gray-500">8文字以上で、英数字と記号を組み合わせることを推奨します。</p>
+                                </div>
+                                <div>
+                                    <label for="confirm_new_password" class="block text-sm font-medium leading-6 text-gray-900">新しいパスワード (確認)</label>
+                                    <div class="mt-2">
+                                        <input type="password" name="confirm_new_password" id="confirm_new_password" autocomplete="new-password"
+                                               class="block w-full rounded-md border-0 py-2.5 px-3 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-sky-600 sm:text-sm sm:leading-6">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="mt-8 flex justify-end">
+                                <button type="submit" class="rounded-md bg-red-600 px-4 py-2 text-sm font-semibold text-white shadow-sm hover:bg-red-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-red-600 transition-colors">
+                                    パスワードを変更
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </section>
+            
+            </div>
+    </main>
+
+    <footer class="bg-gray-700 text-white text-center py-3 h-12 fixed bottom-0 left-0 right-0 z-30">
+        <p class="text-xs">&copy; <span id="currentYear"></span> 株式会社TORQUE</p>
+    </footer>
+
+    <script>
+        document.getElementById('currentYear').textContent = new Date().getFullYear();
+    </script>
+</body>
+</html>
