@@ -43,7 +43,7 @@ export default function RulesPage() {
   const [rules] = useState(offerRulesData);
   const router = useRouter();
 
-  const handleRowClick = (ruleId: string) => {
+  const handleRowClick = () => {
     router.push('/rules/detail');
   };
 
@@ -122,7 +122,7 @@ export default function RulesPage() {
                 </thead>
                 <tbody className="bg-white divide-y divide-gray-200">
                   {rules.map((rule) => (
-                    <tr key={rule.id} className="hover:bg-gray-50 transition-colors cursor-pointer" onClick={() => handleRowClick(rule.id)}>
+                    <tr key={rule.id} className="hover:bg-gray-50 transition-colors cursor-pointer" onClick={() => handleRowClick()}>
                       <td className="px-4 py-3 whitespace-nowrap text-sm text-gray-700">{rule.id}</td>
                       <td className="px-4 py-3 whitespace-nowrap text-sm text-gray-700">{rule.creationDate}</td>
                       <td className="px-4 py-3 whitespace-nowrap text-sm text-gray-700">

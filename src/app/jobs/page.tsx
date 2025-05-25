@@ -34,7 +34,7 @@ export default function JobsPage() {
   const [jobs] = useState(jobsData);
   const router = useRouter();
 
-  const handleRowClick = (jobId: string) => {
+  const handleRowClick = () => {
     router.push('/jobs/detail');
   };
 
@@ -117,7 +117,7 @@ export default function JobsPage() {
                 </thead>
                 <tbody className="bg-white divide-y divide-gray-200">
                   {jobs.map((job) => (
-                    <tr key={job.id} className="hover:bg-gray-50 transition-colors cursor-pointer" onClick={() => handleRowClick(job.id)}>
+                    <tr key={job.id} className="hover:bg-gray-50 transition-colors cursor-pointer" onClick={() => handleRowClick()}>
                       <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-700">{job.id}</td>
                       <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-700">{job.creationDate}</td>
                       <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-700">{job.clientName}</td>

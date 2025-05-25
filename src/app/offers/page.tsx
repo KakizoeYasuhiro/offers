@@ -45,7 +45,7 @@ export default function OffersPage() {
   const [offers] = useState(offerTextsData);
   const router = useRouter();
 
-  const handleRowClick = (offerId: string) => {
+  const handleRowClick = () => {
     router.push('/offers/detail');
   };
 
@@ -122,7 +122,7 @@ export default function OffersPage() {
                 </thead>
                 <tbody className="bg-white divide-y divide-gray-200">
                   {offers.map((offer) => (
-                    <tr key={offer.offerId} className="hover:bg-gray-50 transition-colors cursor-pointer" onClick={() => handleRowClick(offer.offerId)}>
+                    <tr key={offer.offerId} className="hover:bg-gray-50 transition-colors cursor-pointer" onClick={() => handleRowClick()}>
                       <td className="px-4 py-3 whitespace-nowrap text-sm text-gray-700">{offer.offerId}</td>
                       <td className="px-4 py-3 whitespace-nowrap text-sm text-gray-700">{offer.creationDate}</td>
                       <td className="px-4 py-3 whitespace-nowrap text-sm text-gray-700">{offer.jobName}</td>
