@@ -135,6 +135,7 @@ export async function updateJob(id: string, job: Partial<Omit<Job, 'id' | 'creat
   if (updates.length === 0) return null;
 
   const setClauses = updates.map(([key], index) => `${key} = $${index + 2}`).join(', ');
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const _values = [id, ...updates.map(([, value]) => value)];
 
   const result = await sql`
@@ -201,6 +202,7 @@ export async function updateOffer(id: string, offer: Partial<Omit<Offer, 'id' | 
   if (updates.length === 0) return null;
 
   const setClauses = updates.map(([key], index) => `${key} = $${index + 2}`).join(', ');
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const _values = [id, ...updates.map(([, value]) => value)];
 
   const result = await sql`
@@ -273,6 +275,7 @@ export async function updateRule(id: string, rule: Partial<Omit<Rule, 'id' | 'cr
     return `${key} = $${index + 2}`;
   }).join(', ');
 
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const _values = [id, ...updates.map(([key, value]) => {
     if (key === 'conditions' || key === 'actions') {
       return JSON.stringify(value);
