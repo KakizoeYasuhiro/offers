@@ -3,14 +3,15 @@ import { getOfferById, updateOffer, deleteOffer } from '@/lib/db';
 import type { OfferInput, ApiResponse, Offer } from '@/types';
 
 interface RouteParams {
-  params: { id: string };
+  params: Promise<{ id: string }>;
 }
 
 export async function GET(
   request: NextRequest, 
-  { params }: RouteParams
+  context: RouteParams
 ): Promise<NextResponse> {
   try {
+    const params = await context.params;
     const offer = await getOfferById(params.id);
     
     if (!offer) {
@@ -36,9 +37,10 @@ export async function GET(
 
 export async function PUT(
   request: NextRequest, 
-  { params }: RouteParams
+  context: RouteParams
 ): Promise<NextResponse> {
   try {
+    const params = await context.params;
     const body: Partial<OfferInput> = await request.json();
     
     const offer = await updateOffer(params.id, body);
@@ -66,9 +68,10 @@ export async function PUT(
 
 export async function DELETE(
   request: NextRequest, 
-  { params }: RouteParams
+  context: RouteParams
 ): Promise<NextResponse> {
   try {
+    const params = await context.params;
     const success = await deleteOffer(params.id);
     
     if (!success) {

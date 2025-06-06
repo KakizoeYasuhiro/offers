@@ -3,14 +3,15 @@ import { getRuleById, updateRule, deleteRule } from '@/lib/db';
 import type { RuleInput, ApiResponse, Rule } from '@/types';
 
 interface RouteParams {
-  params: { id: string };
+  params: Promise<{ id: string }>;
 }
 
 export async function GET(
   request: NextRequest, 
-  { params }: RouteParams
+  context: RouteParams
 ): Promise<NextResponse> {
   try {
+    const params = await context.params;
     const rule = await getRuleById(params.id);
     
     if (!rule) {
@@ -36,9 +37,10 @@ export async function GET(
 
 export async function PUT(
   request: NextRequest, 
-  { params }: RouteParams
+  context: RouteParams
 ): Promise<NextResponse> {
   try {
+    const params = await context.params;
     const body: Partial<RuleInput> = await request.json();
     
     const rule = await updateRule(params.id, body);
@@ -66,9 +68,10 @@ export async function PUT(
 
 export async function DELETE(
   request: NextRequest, 
-  { params }: RouteParams
+  context: RouteParams
 ): Promise<NextResponse> {
   try {
+    const params = await context.params;
     const success = await deleteRule(params.id);
     
     if (!success) {

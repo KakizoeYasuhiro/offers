@@ -3,14 +3,15 @@ import { getJobById, updateJob, deleteJob } from '@/lib/db';
 import type { JobInput, ApiResponse, Job } from '@/types';
 
 interface RouteParams {
-  params: { id: string };
+  params: Promise<{ id: string }>;
 }
 
 export async function GET(
   request: NextRequest,
-  { params }: { params: { id: string } }
+  context: RouteParams
 ): Promise<NextResponse> {
   try {
+    const params = await context.params;
     const job = await getJobById(params.id);
 
     if (!job) {
@@ -36,9 +37,10 @@ export async function GET(
 
 export async function PUT(
   request: NextRequest, 
-  { params }: RouteParams
+  context: RouteParams
 ): Promise<NextResponse> {
   try {
+    const params = await context.params;
     const body: Partial<JobInput> = await request.json();
     
     const job = await updateJob(params.id, body);
@@ -66,9 +68,10 @@ export async function PUT(
 
 export async function DELETE(
   request: NextRequest, 
-  { params }: RouteParams
+  context: RouteParams
 ): Promise<NextResponse> {
   try {
+    const params = await context.params;
     const success = await deleteJob(params.id);
     
     if (!success) {
