@@ -7,13 +7,12 @@ interface RouteParams {
 }
 
 export async function GET(
-  request: NextRequest, 
-  { params }: { params: { id: string } } // ← このように修正
-) 
-: Promise<NextResponse> {
+  request: NextRequest,
+  { params }: { params: { id: string } }
+): Promise<NextResponse> {
   try {
     const job = await getJobById(params.id);
-    
+
     if (!job) {
       return NextResponse.json(
         { error: 'Not found', message: 'Job not found' },
@@ -26,9 +25,9 @@ export async function GET(
   } catch (error) {
     console.error('Failed to fetch job:', error);
     return NextResponse.json(
-      { 
+      {
         error: 'Failed to fetch job',
-        message: error instanceof Error ? error.message : 'Unknown error'
+        message: error instanceof Error ? error.message : 'Unknown error',
       },
       { status: 500 }
     );
