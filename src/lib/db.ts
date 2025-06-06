@@ -1,5 +1,5 @@
 import { neon } from '@neondatabase/serverless';
-import type { Job, Offer, Rule, PaginationOptions } from '@/types';
+import type { Job, Offer, OfferInput, Rule, PaginationOptions } from '@/types';
 
 if (!process.env.DATABASE_URL) {
   throw new Error('DATABASE_URL environment variable is required');
