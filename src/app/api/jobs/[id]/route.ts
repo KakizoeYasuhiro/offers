@@ -8,8 +8,9 @@ interface RouteParams {
 
 export async function GET(
   request: NextRequest, 
-  { params }: RouteParams
-): Promise<NextResponse> {
+  { params }: { params: { id: string } } // ← このように修正
+) 
+: Promise<NextResponse> {
   try {
     const job = await getJobById(params.id);
     
