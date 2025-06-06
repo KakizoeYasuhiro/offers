@@ -188,7 +188,7 @@ export async function getOfferById(id: string): Promise<Offer | null> {
   return result[0] as Offer || null;
 }
 
-export async function createOffer(offer: Omit<Offer, 'id' | 'created_at' | 'updated_at'>): Promise<Offer> {
+export async function createOffer(offer: OfferInput & { status?: Offer['status'] }): Promise<Offer> {
   const result = await sql`
     INSERT INTO offers (job_id, candidate_name, email, phone, status, cover_letter, resume_url, notes)
     VALUES (${offer.job_id}, ${offer.candidate_name}, ${offer.email}, ${offer.phone}, ${offer.status || 'pending'}, ${offer.cover_letter}, ${offer.resume_url || null}, ${offer.notes || null})
